@@ -3952,6 +3952,10 @@ ignite-ir-boilerplate@^2.3.1:
   dependencies:
     ramda "^0.23.0"
 
+ignite-vector-icons@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/ignite-vector-icons/-/ignite-vector-icons-1.1.0.tgz#8b0d09ebe7de0fde4549cfb6eb8fd066fec63a8b"
+
 image-size@^0.6.0:
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/image-size/-/image-size-0.6.2.tgz#8ee316d4298b028b965091b673d5f1537adee5b4"
@@ -6541,7 +6545,13 @@ react-native@0.50.4:
     xmldoc "^0.4.0"
     yargs "^9.0.0"
 
-react-navigation@^1.0.0-beta.21:
+react-navigation-redux-helpers@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-navigation-redux-helpers/-/react-navigation-redux-helpers-1.0.1.tgz#1d98cb6364ebdf98a90d34aa7b4592b9073d76e2"
+  dependencies:
+    invariant "^2.2.2"
+
+react-navigation@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-1.1.2.tgz#6e041b8a3cd0f5266072df0b52a55117892875f2"
   dependencies:
