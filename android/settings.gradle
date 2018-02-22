@@ -1,0 +1,3 @@
+rootProject.name = 'Fraelo'
+
+include ':app'
