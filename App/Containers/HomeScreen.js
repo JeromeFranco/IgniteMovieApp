@@ -12,33 +12,48 @@ import {
   Content,
   Text
 } from 'native-base';
-// Add Actions - replace 'Your' with whatever your reducer is called :)
-// import YourActions from '../Redux/YourRedux'
+import OnTheAirCreators, { OnTheAirSelectors } from '../Redux/OnTheAirRedux';
+import InTheatresCreators, { InTheatresSelectors } from '../Redux/InTheatresRedux';
 
 // Styles
 import styles from './Styles/HomeScreenStyle';
 
+import HomeSection from '../Components/Home/HomeSection';
+
 class HomeScreen extends Component {
+  componentWillMount() {
+    this.props.getOnTheAir();
+    this.props.getInTheatres();
+  }
+
+  handleItemClick = (item) => {
+    // this.props.navigation.navigate('DetailScreen');
+    console.log(item);
+  }
+
   render() {
+    const { onTheAir, inTheatres } = this.props;
+
     return (
-      <Container>
+      <Container style={{ backgroundColor: '#fff' }}>
         <Header>
           <Left>
             <Button transparent>
-              <Icon name='menu' />
+              <Icon name="menu" />
             </Button>
           </Left>
           <Body>
             <Title>Home</Title>
           </Body>
           <Right>
-            <Icon name="search" color="white" style={styles.fontIcon} />
+            <Button transparent>
+              <Icon name="search" />
+            </Button>
           </Right>
         </Header>
-        <Content padder>
-          <Button>
-            <Text> Click Me! </Text>
-          </Button>
+        <Content>
+          <HomeSection title="On TV" items={onTheAir.data || []} onItemClick={this.handleItemClick} />
+          <HomeSection title="In Theatres" items={inTheatres.data || []} onItemClick={this.handleItemClick} />
         </Content>
       </Container>
     );
@@ -46,11 +61,15 @@ class HomeScreen extends Component {
 }
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    onTheAir: OnTheAirSelectors.getData(state),
+    inTheatres: InTheatresSelectors.getData(state)
+  };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {};
+const mapDispatchToProps = {
+  getOnTheAir: OnTheAirCreators.onTheAirRequest,
+  getInTheatres: InTheatresCreators.inTheatresRequest
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);

@@ -1,8 +1,9 @@
 // a library to wrap and simplify api calls
-import apisauce from 'apisauce'
+import apisauce from 'apisauce';
+import config from '../Config/MovieDBConfig';
 
 // our "constructor"
-const create = (baseURL = 'https://api.github.com/') => {
+const create = (baseURL = config.apiUrl) => {
   // ------
   // STEP 1
   // ------
@@ -18,7 +19,7 @@ const create = (baseURL = 'https://api.github.com/') => {
     },
     // 10 second timeout...
     timeout: 10000
-  })
+  });
 
   // ------
   // STEP 2
@@ -34,9 +35,11 @@ const create = (baseURL = 'https://api.github.com/') => {
   // Since we can't hide from that, we embrace it by getting out of the
   // way at this level.
   //
-  const getRoot = () => api.get('')
-  const getRate = () => api.get('rate_limit')
-  const getUser = (username) => api.get('search/users', {q: username})
+  const getRoot = () => api.get('');
+  const getRate = () => api.get('rate_limit');
+  const getUser = username => api.get('search/users', { q: username });
+  const getOnTheAir = () => api.get(`tv/on_the_air?api_key=${config.apiKey}`);
+  const getInTheatres = () => api.get(`movie/now_playing?api_key=${config.apiKey}`);
 
   // ------
   // STEP 3
@@ -54,11 +57,13 @@ const create = (baseURL = 'https://api.github.com/') => {
     // a list of the API functions from step 2
     getRoot,
     getRate,
-    getUser
-  }
-}
+    getUser,
+    getOnTheAir,
+    getInTheatres
+  };
+};
 
 // let's return back our create method as the default.
 export default {
   create
-}
+};

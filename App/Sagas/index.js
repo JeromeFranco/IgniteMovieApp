@@ -7,11 +7,15 @@ import DebugConfig from '../Config/DebugConfig'
 
 import { StartupTypes } from '../Redux/StartupRedux'
 import { GithubTypes } from '../Redux/GithubRedux'
+import { OnTheAirTypes } from '../Redux/OnTheAirRedux';
+import { InTheatresTypes } from '../Redux/InTheatresRedux';
 
 /* ------------- Sagas ------------- */
 
 import { startup } from './StartupSagas'
 import { getUserAvatar } from './GithubSagas'
+import { getOnTheAir } from './OnTheAirSagas';
+import { getInTheatres } from './InTheatresSagas';
 
 /* ------------- API ------------- */
 
@@ -23,10 +27,9 @@ const api = DebugConfig.useFixtures ? FixtureAPI : API.create()
 
 export default function * root () {
   yield all([
-    // some sagas only receive an action
     takeLatest(StartupTypes.STARTUP, startup),
-
-    // some sagas receive extra parameters in addition to an action
-    takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api)
+    takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api),
+    takeLatest(OnTheAirTypes.ON_THE_AIR_REQUEST, getOnTheAir, api),
+    takeLatest(InTheatresTypes.IN_THEATRES_REQUEST, getInTheatres, api)
   ])
 }

@@ -6,6 +6,8 @@ import rootSaga from '../Sagas/'
 export const reducers = combineReducers({
   nav: require('./NavigationRedux').reducer,
   github: require('./GithubRedux').reducer,
+  onTheAir: require('./OnTheAirRedux').reducer,
+  inTheatres: require('./InTheatresRedux').reducer,
   search: require('./SearchRedux').reducer
 })
 
