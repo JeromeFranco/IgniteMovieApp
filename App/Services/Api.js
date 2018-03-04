@@ -40,6 +40,8 @@ const create = (baseURL = config.apiUrl) => {
   const getUser = username => api.get('search/users', { q: username });
   const getOnTheAir = () => api.get(`tv/on_the_air?api_key=${config.apiKey}`);
   const getInTheatres = () => api.get(`movie/now_playing?api_key=${config.apiKey}`);
+  const getDetail = (type, id) => api.get(`${type}/${id}?api_key=${config.apiKey}`);
+  const getCrew = (movieId) => api.get(`movie/${movieId}/credits?api_key=${config.apiKey}`);
 
   // ------
   // STEP 3
@@ -59,7 +61,9 @@ const create = (baseURL = config.apiUrl) => {
     getRate,
     getUser,
     getOnTheAir,
-    getInTheatres
+    getInTheatres,
+    getDetail,
+    getCrew
   };
 };
 

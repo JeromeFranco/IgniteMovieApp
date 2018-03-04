@@ -27,15 +27,14 @@ class HomeScreen extends Component {
   }
 
   handleItemClick = (item) => {
-    // this.props.navigation.navigate('DetailScreen');
-    console.log(item);
+    this.props.navigation.navigate('DetailScreen', item);
   }
 
   render() {
     const { onTheAir, inTheatres } = this.props;
 
     return (
-      <Container style={{ backgroundColor: '#fff' }}>
+      <Container style={styles.container}>
         <Header>
           <Left>
             <Button transparent>

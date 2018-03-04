@@ -11,7 +11,6 @@ export default class HomeSection extends Component {
     onItemClick: PropTypes.func
   }
 
-
   render() {
     const { title, items, onItemClick } = this.props;
     return (
@@ -22,7 +21,7 @@ export default class HomeSection extends Component {
         {
           items.map(item =>
             <ListItem key={item.id} style={styles.listItem}>
-              <TouchableOpacity style={styles.item}>
+              <TouchableOpacity style={styles.item} onPress={() => onItemClick(item)}>
                 <Image source={{uri: item.backdrop_path}} style={styles.itemImage} />
                 <H2 style={styles.itemCaption}>{item.title}</H2>
               </TouchableOpacity>
