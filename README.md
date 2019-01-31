@@ -2,6 +2,7 @@
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](http://standardjs.com/)
 
 * A Movie DB app built with React Native and utiliziting [Ignite](https://github.com/infinitered/ignite)
+* This only works on Android. Ios version coming soon
 
 ## :arrow_up: How to Setup
 
